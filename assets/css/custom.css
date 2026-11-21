@@ -1,0 +1,116 @@
+/* Ria Benad Travel - small additions to Tailwind */
+
+html {
+  scroll-behavior: smooth;
+}
+
+section[id],
+main[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+:focus-visible {
+  outline: 3px solid #F2A541;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Legal dialogs */
+dialog.legal {
+  width: min(100% - 2rem, 46rem);
+  max-height: min(88vh, 52rem);
+  padding: 0;
+  border: none;
+  border-radius: 1.25rem;
+  background: #ffffff;
+  color: #1C2B36;
+  overflow-y: auto;
+  box-shadow: 0 30px 80px -20px rgba(28, 43, 54, 0.45);
+}
+
+dialog.legal::backdrop {
+  background: rgba(28, 43, 54, 0.65);
+  backdrop-filter: blur(2px);
+}
+
+dialog.legal h3 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.375rem;
+  color: #1C2B36;
+}
+
+dialog.legal p,
+dialog.legal li {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #33434f;
+}
+
+dialog.legal ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin-top: 0.25rem;
+}
+
+dialog.legal a {
+  color: #0E6E7E;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Hero route animation */
+.route-dash {
+  stroke-dasharray: 6 8;
+  animation: route-move 18s linear infinite;
+}
+
+@keyframes route-move {
+  to {
+    stroke-dashoffset: -280;
+  }
+}
+
+.float-soft {
+  animation: float-soft 7s ease-in-out infinite;
+}
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .route-dash,
+  .float-soft {
+    animation: none !important;
+  }
+}
